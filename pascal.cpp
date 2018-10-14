@@ -1,31 +1,37 @@
-#include <iostream>
+#include<iostream>
 
-void pascalsTriangle(int n)
+long factorial(int n)
 {
-	int rows = n;
-	int triangle[n][n];
-	for(int i = 0; i < n; i++)
-		for(int j = 0; j < n; j++)
-			triangle[i][j] = 0;
-
-	for(int i = 0; i < n; i++)
+	long result=1;
+	for(int i=1;i<=n;i++)
 	{
-		for(int k = n-i; k>-1; k--) std::cout << " ";
-		for(int j = 0; j <= i; j++)
-		{
-			if(i==0 || j == 0) triangle[i][j] = 1;
-			else triangle[i][j] = triangle[i-1][j] + triangle[i-1][j-1];
-			std::cout << triangle[i][j] << " ";
-		}
-		std::cout << std::endl;
+		result*=i;
+	}
+	return result;
+}
+
+void pascal_triangle(int r)
+{
+	int i,j,k;
+	
+	for(i=0;i<r;i++)
+	{
+		for(j=0;j<(r-i-2);j++)
+			cout<<" ";
+		for(k=0;k<=i;k++)
+			cout<<factorial(i)/(factorial(k)*factorial(i-k)));
+		cout<<endl;
 	}
 }
 
 int main()
 {
 	int n;
-	std::cout << "Enter the number of rows to calculate: ";
-	std::cin >> n;
-	pascalsTriangle(n);
+	cout<<"Enter the Number of rows Wnated in Pascal's Triangle";
+	cin>>n
+        cout<<endl;
+	pascal_triangle(n);
 	return 0;
 }
+
+	
